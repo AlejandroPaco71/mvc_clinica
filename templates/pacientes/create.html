@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} PACIENTES | CREATE {% endblock %}
+
+{% block content %}
+
+<h1>Registro de Paciente</h1>
+
+<form action="{{ url_for('paciente.create') }}" method="POST">
+    <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Edad</label>
+        <input type="number" class="form-control" name="edad" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Dirección</label>
+        <input type="text" class="form-control" name="direccion" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" name="telefono" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar paciente</button>
+</form>
+
+{% endblock %}
