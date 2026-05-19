@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>Lista de Pacientes</h1>
-<a href="{{ url_for('paciente.create') }}" class="btn btn-success mb-3">Nuevo</a>
+<a href="{{ url_for('paciente.create') }}" class="btn btn-success mb-3">Nuevo paciente</a>
 
 <table class="table table-striped">
     <thead>
@@ -13,9 +13,7 @@
             <th>Edad</th>
             <th>Dirección</th>
             <th>Teléfono</th>
-            <th></th>
-            <th></th>
-            <th>Historial</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -28,10 +26,9 @@
             <td>{{ item.telefono }}</td>
             <td>
                 <a href="{{ url_for('paciente.edit', id=item.id) }}" class="btn btn-warning">Editar</a>
-            </td>
-            <td>
                 <a href="{{ url_for('paciente.delete', id=item.id) }}" class="btn btn-danger">Eliminar</a>
             </td>
+
 
         </tr>
         {% endfor %}
