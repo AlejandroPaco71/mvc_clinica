@@ -21,7 +21,8 @@ def login():
             session['logged_in'] = True
             
             flash(f'Bienvenido {usuario.nombre}!', 'success')
-            return redirect(url_for('home'))
+            #return redirect(url_for('home'))
+            return redirect(url_for('medico.index'))
         else:
             flash('Usuario o contraseña incorrectos', 'danger')
             return redirect(url_for('auth.login'))

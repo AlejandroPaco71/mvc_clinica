@@ -28,7 +28,7 @@
                 <td>{{ medico.correo }}</td>
                 <td>
                     <a href="{{ url_for('medico.edit', id=medico.id) }}" class="btn btn-sm btn-warning">Editar</a>
-                    <a href="{{ url_for('medico.delete', id=medico.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                    <a href="{{ url_for('medico.delete', id=medico.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Estás seguro de eliminar ?')">Eliminar</a>
                 </td>
             </tr>
             {% endfor %}

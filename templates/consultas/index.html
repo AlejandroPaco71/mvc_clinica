@@ -29,7 +29,7 @@
             <td>{{ item.diagnostico[:50] }}{% if item.diagnostico|length > 50 %}...{% endif %}</td>
             <td>
                 <a href="{{ url_for('consulta.edit', id=item.id) }}" class="btn btn-warning">Editar</a>
-                <a href="{{ url_for('consulta.delete', id=item.id) }}" class="btn btn-danger">Eliminar</a>
+                <a href="{{ url_for('consulta.delete', id=item.id) }}" class="btn btn-danger" onclick="return confirm('Estás seguro de eliminar ?')">Eliminar</a>
             </td>
         </tr>
         {% endfor %}

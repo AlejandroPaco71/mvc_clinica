@@ -1,4 +1,4 @@
-from flask import Flask, request, session
+from flask import Flask, request, session, redirect, url_for
 from controllers import medico_controller, paciente_controller, consulta_controller, auth_controller
 from database import db
 
@@ -25,19 +25,19 @@ def inject_active_path():
 @app.route("/")
 def home():
     if session.get('logged_in'):
-        return "<h1>Bienvenido a la Clínica Médica</h1><a href='/medicos/'>Ir a Administrar Clinica </a>"
+        return "<h1>Bienvenido a la Clinica Médica</h1><a href='/medicos/'>Ir a Administrar Clinica </a>"
     else:
-        return "<h1>Clínica Médica</h1><a href='/auth/login'>Iniciar Sesión</a>"
+        return redirect(url_for('auth.login'))
 
 if __name__ ==  "__main__"  :
     with app.app_context():
         db.create_all()
         # Crear usuario administrador por defecto (opcional)
-        from models.usuario_model import Usuario
-        if not Usuario.get_by_username('admin'):
-            admin = Usuario('Administrador', 'admin', 'admin123', 'admin')
-            admin.save()
-            print("Usuario administrador creado: admin / admin123")
+        # from models.usuario_model import Usuario
+        # if not Usuario.get_by_username('admin'):
+        #     admin = Usuario('Administrador', 'admin', 'admin123', 'admin')
+        #     admin.save()
+        #     print("Usuario administrador creado: admin / admin123")
     app.run(debug=True)
  
 
