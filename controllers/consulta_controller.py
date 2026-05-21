@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, Blueprint
+from flask import request, redirect, url_for, Blueprint, flash
 from datetime import datetime
 
 from models.medico_model import Medico
@@ -32,6 +32,7 @@ def create():
             paciente_id=paciente_id
         )
         consulta.save()
+        flash('Registro exitoso', 'success')
         return redirect(url_for('consulta.index'))
     
     medicos = Medico.query.all()
@@ -58,6 +59,7 @@ def edit(id):
             medico_id=medico_id, 
             paciente_id=paciente_id
         )
+        flash('Consulta actualizado exitosamente', 'success')
         return redirect(url_for("consulta.index"))
     
     medicos = Medico.query.all()
@@ -69,4 +71,5 @@ def edit(id):
 def delete(id):
     consulta = Consulta.get_by_id(id)
     consulta.delete()
+    flash('Consulta eliminado exitosamente', 'success')
     return redirect(url_for("consulta.index"))

@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, Blueprint
+from flask import request, redirect, url_for, Blueprint, flash
 from models.paciente_model import Paciente
 from view import paciente_view
 
@@ -20,6 +20,7 @@ def create():
         
         paciente = Paciente(nombre, edad, direccion, telefono)
         paciente.save()
+        flash('Registro exitoso', 'success')
         return redirect(url_for('paciente.index'))
     
     return paciente_view.create()
@@ -35,6 +36,7 @@ def edit(id):
         
         # actualizar
         paciente.update(nombre=nombre, edad=edad, direccion=direccion, telefono=telefono)
+        flash('Paciente actualizado exitosamente', 'success')
         return redirect(url_for("paciente.index"))
         
     return paciente_view.edit(paciente)
@@ -43,4 +45,5 @@ def edit(id):
 def delete(id):
     paciente = Paciente.get_by_id(id)
     paciente.delete()
+    flash('Paciente eliminado exitosamente', 'success')
     return redirect(url_for("paciente.index"))

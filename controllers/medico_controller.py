@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, Blueprint
+from flask import request, redirect, url_for, Blueprint, flash
 from models.medico_model import Medico
 from view import medico_view
 from utils.decorators import login_required, admin_required
@@ -23,6 +23,7 @@ def create():
         
         medico = Medico(nombre, especialidad, telefono, correo)
         medico.save()
+        flash('Registro exitoso', 'success')
         return redirect(url_for('medico.index'))
     
     return medico_view.create()
@@ -39,6 +40,7 @@ def edit(id):
         
         # actualizar
         medico.update(nombre=nombre, especialidad=especialidad, telefono=telefono, correo=correo)
+        flash('Medico actualizado exitosamente', 'success')
         return redirect(url_for("medico.index"))
         
     return medico_view.edit(medico)
@@ -48,4 +50,5 @@ def edit(id):
 def delete(id):
     medico = Medico.get_by_id(id)
     medico.delete()
+    flash('Medico eliminado exitosamente', 'success')
     return redirect(url_for("medico.index"))

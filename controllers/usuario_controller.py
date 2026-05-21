@@ -12,20 +12,6 @@ def index():
     usuarios = Usuario.get_all()
     return usuario_view.list(usuarios)
 
-# @usuario_bp.route("/create", methods=['GET', 'POST'])
-# @login_required  # Proteger esta ruta
-# def create():
-#     if request.method == 'POST':
-#         nombre = request.form['nombre']
-#         username = request.form['username']
-#         rol = request.form['rol']
-
-        
-#         usuario = usuario(nombre, username, rol)
-#         usuario.save()
-#         return redirect(url_for('usuario.index'))
-    
-#     return usuario_view.create()
 
 @usuario_bp.route("/create", methods=['GET', 'POST'])
 def create():
@@ -56,24 +42,6 @@ def create():
         return redirect(url_for('usuario.index'))
     
     return usuario_view.create()
-
-
-
-# @usuario_bp.route("/edit/<int:id>", methods=['GET', 'POST'])
-# @login_required  # Proteger esta ruta
-# def edit(id):
-#     usuario = Usuario.get_by_id(id)
-#     if request.method == 'POST':
-#         nombre = request.form['nombre']
-#         username = request.form['username']
-#         rol = request.form['rol']
-
-#         # actualizar
-#         usuario.update(nombre=nombre, username=username, rol=rol)
-#         return redirect(url_for("usuario.index"))
-        
-#     return usuario_view.edit(usuario)
-
 
 @usuario_bp.route("/edit/<int:id>", methods=['GET','POST'])
 @login_required
