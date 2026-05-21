@@ -21,7 +21,7 @@ def login():
             session['logged_in'] = True
             
             flash(f'Bienvenido {usuario.nombre}!', 'success')
-            #return redirect(url_for('home'))
+            #Si logramos logearnos corectamente la vista se va directo a lista de medicos
             return redirect(url_for('medico.index'))
         else:
             flash('Usuario o contraseña incorrectos', 'danger')
@@ -37,18 +37,18 @@ def register():
         password = request.form['password']
         confirm_password = request.form['confirm_password']
         
-        # Validar que las contraseñas coincidan
+        # Validamos que las contraseñas coincidan
         if password != confirm_password:
             flash('Las contraseñas no coinciden', 'danger')
             return redirect(url_for('auth.register'))
         
-        # Validar que el username no exista
+        # Validamos que el username no exista
         existing_user = Usuario.get_by_username(username)
         if existing_user:
             flash('El nombre de usuario ya existe', 'danger')
             return redirect(url_for('auth.register'))
         
-        # Crear nuevo usuario (por defecto rol 'usuario')
+        # Creamos el  nuevo usuario, por defecto con rol 'usuario'
         usuario = Usuario(nombre, username, password, 'usuario')
         usuario.save()
         
@@ -61,5 +61,5 @@ def register():
 def logout():
     # Limpiar la sesión
     session.clear()
-    flash('Sesión cerrada correctamente', 'info')
+    flash('Sesion cerrada Chau!!', 'info')
     return redirect(url_for('auth.login'))

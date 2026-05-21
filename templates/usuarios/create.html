@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} USUARIO | CREATE {% endblock %}
+
+{% block content %}
+
+<h1>Registro de Usuario</h1>
+
+<!-- <form action="{{ url_for('usuario.create') }}" method="POST">
+    <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Rol</label>
+        <input type="text" class="form-control" name="rol" required>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Registrar médico</button>
+    <a class="btn btn-secondary" href="/usuarios/">Cancelar</a>
+</form> -->
+
+<form action="{{ url_for('usuario.create') }}" method="POST">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre Completo</label>
+        <input type="text" class="form-control" name="nombre" required>
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Usuario</label>
+        <input type="text" class="form-control" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="password" required>
+    </div>
+    <div class="mb-3">
+        <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
+        <input type="password" class="form-control" name="confirm_password" required>
+    </div>
+    <div class="mb-3">
+        <label for="rol" class="form-label">Rol</label>
+        <select name="rol" class="form-control" required>
+            <option value="usuario">Usuario normal</option>
+            <option value="admin">Administrador</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Registrarse</button>
+    <a class="btn btn-secondary" href="/usuarios/">Cancelar</a>
+</form>
+
+
+
+
+{% endblock %}

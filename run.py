@@ -1,5 +1,5 @@
 from flask import Flask, request, session, redirect, url_for
-from controllers import medico_controller, paciente_controller, consulta_controller, auth_controller
+from controllers import medico_controller, paciente_controller, consulta_controller, auth_controller, usuario_controller
 from database import db
 
 app = Flask(__name__)
@@ -14,6 +14,7 @@ app.register_blueprint(medico_controller.medico_bp)
 app.register_blueprint(paciente_controller.paciente_bp)
 app.register_blueprint(consulta_controller.consulta_bp)
 app.register_blueprint(auth_controller.auth_bp)
+app.register_blueprint(usuario_controller.usuario_bp)
 
 @app.context_processor
 def inject_active_path():
